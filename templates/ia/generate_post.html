@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Generador IA
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+            Generador de Publicaciones
+        </h3>
+        <div class="alert alert-info">
+            <strong>Negocio activo:</strong> {{ active_business.business_name }}
+            <br>
+            <strong>Tono:</strong> {{ selected_tone }}
+        </div>
+
+
+
+        <form method="POST">
+                      
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ form.objective.label_tag }}
+                {{ form.objective }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.platform.label_tag }}
+                {{ form.platform }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.product_name.label_tag }}
+                {{ form.product_name }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.tone_override.label_tag }}
+                {{ form.tone_override }}
+            </div>
+
+            <button
+                class="btn btn-primary"
+                type="submit">
+
+                Generar
+
+            </button>
+
+        </form>
+
+        {% if generated_text %}
+
+            <hr>
+
+            <h4>Resultado</h4>
+
+            <div class="alert alert-success">
+
+                {{ generated_text }}
+
+            </div>
+
+        {% endif %}
+
+        {% if generated_content %}
+
+        <div class="row mt-4">
+
+            <div class="col-md-4">
+
+                <div class="card h-100">
+
+                    <div class="card-header">
+                        Profesional
+                    </div>
+
+                        <div class="card-body">
+
+                        <p id="professional-text">
+                            {{ generated_content.professional }}
+                        </p>
+
+                        <button
+                            id="btn-professional"
+                            onclick="copyText('professional-text','btn-professional')">
+
+                            Copiar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                Cercana
+                </div>
+
+                    <div class="card-body">
+
+                        <p id="friendly-text">
+                            {{ generated_content.friendly }}
+                        </p>
+
+                        <button
+                            id="btn-friendly"
+                            onclick="copyText(
+                                'friendly-text',
+                                'btn-friendly'
+                            )">
+
+                            Copiar
+
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <div class="col-md-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                Divertido
+                </div>
+
+                    <div class="card-body">
+
+                        <p id="sales-text">
+                            {{ generated_content.funny }}
+                        </p>
+
+                        <button
+                            id="btn-sales"
+                            onclick="copyText(
+                            'sales-text',
+                            'btn-sales'
+                            )">
+
+                            Copiar
+
+                        </button>
+
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+        {% if generated_content.photo_idea %}
+
+        <div class="card mt-4">
+
+            <div class="card-header">
+
+                 📸 Idea de Fotografía
+
+            </div>
+
+                <div class="card-body">
+
+                    <p id="photo-idea">
+
+                        {{ generated_content.photo_idea }}
+
+                    </p>
+
+                    <button
+                        id="btn-photo"
+                        class="btn btn-outline-secondary"
+                        onclick="copyText('photo-idea', 'btn-photo')">
+
+                         Copiar Idea
+
+                    </button>
+
+                </div>
+
+        </div>
+
+        {% endif %}  
+
+    </div>
+
+    {% if generated_post %}
+
+    <a
+        href="{% url 'generate_post_image' generated_post.id %}"
+        class="btn btn-success">
+
+        Generar Imagen IA
+
+    </a>
+
+    {% endif %}
+
+
+</div>
+<script>
+
+    function copyText(textId, buttonId) {
+    
+        const text =
+            document.getElementById(textId).innerText;
+    
+        navigator.clipboard.writeText(text)
+            .then(() => {
+    
+                const button =
+                    document.getElementById(buttonId);
+    
+                button.innerText = "✓ Copiado";
+    
+                setTimeout(() => {
+    
+                    button.innerText = "Copiar";
+    
+                }, 2000);
+    
+            });
+    
+    }
+    
+    </script>
+
+{% endblock %}

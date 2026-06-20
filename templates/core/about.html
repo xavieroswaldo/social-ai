@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+
+```
+<div class="text-center mb-5">
+
+    <h1 class="display-4 fw-bold">
+
+        Impulsamos el crecimiento digital de los pequeños negocios
+
+    </h1>
+
+    <p class="lead text-muted mt-3">
+
+        Social AI ayuda a emprendedores y negocios
+        a crear contenido para redes sociales
+        de forma rápida y sencilla.
+
+    </p>
+
+</div>
+
+<div class="card shadow-sm border-0 mb-5">
+
+    <div class="card-body p-4">
+
+        <h2>Nuestra misión</h2>
+
+        <p>
+
+            Democratizar el acceso al marketing digital,
+            permitiendo que cualquier negocio pueda promocionar
+            sus productos y servicios sin necesidad de ser
+            experto en publicidad.
+
+        </p>
+
+    </div>
+
+</div>
+
+<div class="row mb-5">
+
+    <div class="col-md-6">
+
+        <h2>El problema que resolvemos</h2>
+
+        <p>
+
+            Muchos negocios tienen excelentes productos,
+            pero carecen del tiempo o conocimientos para
+            generar contenido constante para redes sociales.
+
+        </p>
+
+        <p>
+
+            Social AI simplifica ese proceso mediante
+            herramientas impulsadas por inteligencia artificial.
+
+        </p>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <h2>Nuestra visión</h2>
+
+        <p>
+
+            Convertirnos en la plataforma de referencia para
+            la creación de contenido comercial impulsado por IA
+            para pequeñas y medianas empresas.
+
+        </p>
+
+    </div>
+
+</div>
+
+<div class="text-center mb-5">
+
+    <h2>¿A quién ayudamos?</h2>
+
+    <div class="mt-4">
+
+        <span class="badge bg-primary p-3 m-1">
+            ☕ Cafeterías
+        </span>
+
+        <span class="badge bg-success p-3 m-1">
+            🍨 Heladerías
+        </span>
+
+        <span class="badge bg-danger p-3 m-1">
+            🍽 Restaurantes
+        </span>
+
+        <span class="badge bg-warning text-dark p-3 m-1">
+            👕 Tiendas de ropa
+        </span>
+
+        <span class="badge bg-secondary p-3 m-1">
+            🛒 Emprendedores
+        </span>
+
+    </div>
+
+</div>
+
+<div class="text-center py-5">
+
+    <h2>
+
+        ¿Listo para impulsar tu negocio?
+
+    </h2>
+
+    <p class="lead">
+
+        Descubre cómo Social AI puede ayudarte a generar
+        contenido para tus redes sociales.
+
+    </p>
+
+    {% if not request.user.is_authenticated %}
+
+    <a href="{% url 'register' %}"
+       class="btn btn-success btn-lg">
+
+        Crear Cuenta Gratis
+
+    </a>
+    {% endif %}
+
+</div>
+```
+
+</div>
+
+{% endblock %}

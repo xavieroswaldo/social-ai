@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Mis Negocios</h2>
+
+<a href="{% url 'business_create' %}"
+   class="btn btn-primary mb-3">
+
+   Nuevo Negocio
+
+</a>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+            <th>Activo</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for business in businesses %}
+
+        <tr>
+
+            <td>{{ business.business_name }}</td>
+
+            <td>{{ business.city }}</td>
+
+            <td>{{ business.business_type }}</td>
+
+            <td>
+
+                <a href="{% url 'business_update' business.id %}"
+                   class="btn btn-warning btn-sm">
+
+                   Editar
+
+                </a>
+
+                <a href="{% url 'business_delete' business.id %}"
+                   class="btn btn-danger btn-sm">
+
+                   Eliminar 
+
+                </a>
+
+            </td>
+            <td>
+
+                {% if active_business_id == business.id %}
+            
+                    <span class="badge bg-success">
+            
+                        Activo
+            
+                    </span>
+            
+                {% else %}
+            
+                    <a
+                        href="{% url 'set_active_business' business.id %}"
+                        class="btn btn-sm btn-outline-primary">
+            
+                        Activar
+            
+                    </a>
+            
+                {% endif %}
+            
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

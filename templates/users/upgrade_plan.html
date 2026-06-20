@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+   
+
+    <div class="container">
+
+        <div class="text-center mb-4">
+
+        <h2>
+            🚀 Actualiza a Premium
+        </h2>
+
+        <p class="text-muted">
+
+            Has alcanzado el límite de tu plan gratuito.
+
+        </p>
+
+        </div>
+
+        <div class="alert alert-primary">
+
+        Tu plan actual:
+
+        <strong>
+
+            {{ subscription.get_plan_display }}
+
+        </strong>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+
+            ⭐ Beneficios Premium
+
+        </div>
+
+        <div class="card-body">
+
+            <ul class="list-unstyled">
+
+                <li>
+                    ✅ Publicaciones IA ilimitadas
+                </li>
+
+                <li>
+                    ✅ Imágenes IA ilimitadas
+                </li>
+
+                <li>
+                    ✅ Registra 3 negocios
+                </li>
+
+                <li>
+                    ✅ Generacion de posters
+                </li>
+
+                <li>
+                    ✅ Nuevas funcionalidades exclusivas
+                </li>
+
+                <li>
+                    ✅ Soporte prioritario
+                </li>
+
+            </ul>
+
+            <hr>
+
+            <p>
+
+                Para activar Premium comunícate con nuestro equipo.
+
+            </p>
+
+            <p>
+
+                Una vez confirmado el pago, activaremos tu cuenta Premium.
+
+            </p>
+
+            <div class="text-center mt-1">
+
+                
+            
+                <a
+                    href="https://wa.me/593987812280?text=Hola,%20estoy%20interesado%20en%20Social%20AI%20y%20quisiera%20más%20información."
+                    target="_blank"
+                    class="btn btn-success btn-lg"
+                >
+            
+                     Escríbenos por WhatsApp
+            
+                </a>
+            
+                
+            
+            </div>
+
+        </div>
+
+    </div>
+</div> 
+</div> 
+    
+
+{% endblock %}

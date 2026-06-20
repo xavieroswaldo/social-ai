@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="alert alert-info">
+
+        El tipo de negocio no puede modificarse una vez creado. Necesita ayuda, contactese con nuestro equipo!
+    
+    </div>
+
+    <div class="card-body">
+
+        <form
+            method="POST"
+            enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button
+                class="btn btn-success">
+
+                Guardar
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

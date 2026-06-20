@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+{% if not request.user.email_verified %}
+
+<div class="alert alert-warning">
+
+    <strong>
+
+        ⚠ Correo electrónico pendiente de verificación
+
+    </strong>
+
+    <br>
+
+    Tu cuenta aún no ha sido verificada.
+
+    Revisa tu bandeja de entrada y haz clic en el enlace enviado a:
+
+    <strong>
+
+        {{ request.user.email }}
+
+    </strong>
+
+</div>
+
+{% endif %}
+{% if request.user.email_verified %}
+
+<div class="alert alert-success">
+
+    ✅ Correo electrónico verificado
+
+</div>
+
+{% endif %}
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <h1>
+            Dashboard
+        </h1>
+
+        <div class="alert alert-light border">
+
+            Bienvenido,
+        
+            <strong>
+        
+                {{ request.user.first_name|default:request.user.username }}
+        
+            </strong>
+        
+        
+        
+        </div>
+
+    </div>
+
+    <div class="card border-primary mb-4">
+
+        <div class="card-header">
+    
+            🚀 Mi Plan
+    
+        </div>
+    
+        <div class="card-body">
+    
+            <p>       
+                <strong>Plan actual:</strong>       
+
+                {{ subscription.get_plan_display }}
+                 
+            </p>
+            
+            
+                    {% if subscription.plan == "free" %}
+            
+                        <p>
+            
+                            <strong>Publicaciones generadas:</strong>
+            
+                            {{ subscription.posts_generated }}
+                            /
+                            {{ post_limit }}
+            
+                        </p>
+            
+                        <p>
+            
+                            <strong>Imágenes generadas:</strong>
+            
+                            {{ subscription.images_generated }}
+                            /
+                            {{ image_limit }}
+            
+                        </p>
+            
+                    {% else %}
+            
+                        <p>
+            
+                            <strong>Publicaciones generadas:</strong>
+            
+                            {{ subscription.posts_generated }}
+            
+                            <span class="badge bg-success">
+            
+                                Ilimitadas
+            
+                            </span>
+            
+                        </p>
+            
+                        <p>
+            
+                            <strong>Imágenes generadas:</strong>
+            
+                            {{ subscription.images_generated }}
+            
+                            <span class="badge bg-success">
+            
+                                Ilimitadas
+            
+                            </span>
+            
+                        </p>
+            
+                    {% endif %}
+            
+                </div>
+            
+            </div>
+    
+            <p>
+                📝 Publicaciones:
+            </p>
+            
+            <div class="progress mb-3">
+            
+                <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: {{ post_percentage }}%;">
+            
+                    {{ subscription.posts_generated }}/{{ post_limit }}
+            
+                </div>
+                
+                
+            
+            </div>
+    
+            <p>
+                🎨 Imágenes IA:
+            </p>
+            
+            <div class="progress mb-3">
+            
+                <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: {{ image_percentage }}%;">
+            
+                    {{ subscription.images_generated }}/{{ image_limit }}
+            
+                </div>
+            
+            </div>
+            <hr>
+            
+
+            <h6>
+                ⭐ Próximamente Premium
+            </h6>
+    
+            <ul>
+                <li>Publicaciones ilimitadas</li>
+                <li>Imágenes IA ilimitadas</li>
+                <li>Registra mas de un negocio</li>
+                <li>Nuevas funcionalidades exclusivas</li>
+            </ul>
+
+    
+        </div>
+        
+    
+    </div>
+
+</div>
+
+{% endblock %}
