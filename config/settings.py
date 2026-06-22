@@ -58,7 +58,14 @@ CONTACT_EMAIL = "miequipofullstack26@gmail.com"
 #Eliminra luego es solo para pruebas
 ALLOWED_HOSTS = ["*"]
 
-#eliminar luego es solo para pruebas
+#eliminar luego es solo para pruebas, se agrego con render
+CSRF_TRUSTED_ORIGINS = [
+    "https://social-ai-6tgv.onrender.com"
+]
+
+#seagrega con render
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 
