@@ -18,9 +18,18 @@ Login
                     Iniciar Sesión
                 </h3>
 
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    Usuario o contraseña incorrectos
+                </div>
+                {% endif %}
+                
+
                 <form method="POST">
 
                     {% csrf_token %}
+
+                    {{ form.non_field_errors }}
 
                     <div class="mb-3">
 
@@ -34,7 +43,7 @@ Login
 
                     </div>
 
-                    <button class="btn btn-dark w-100">
+                    <button type="submit" class="btn btn-dark w-100">
 
                         Ingresar
 

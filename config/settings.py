@@ -56,7 +56,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CONTACT_EMAIL = "miequipofullstack26@gmail.com"
 
 #Eliminra luego es solo para pruebas
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://social-ai-6tgv.onrender.com"]
 
 #eliminar luego es solo para pruebas, se agrego con render
 CSRF_TRUSTED_ORIGINS = [
@@ -66,6 +66,7 @@ CSRF_TRUSTED_ORIGINS = [
 #seagrega con render
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 
 

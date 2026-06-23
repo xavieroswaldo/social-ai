@@ -34,7 +34,8 @@ class CustomLoginView(LoginView):
 
     redirect_authenticated_user = True
 
-    next_page = reverse_lazy("dashboard")
+    def get_success_url(self):
+        return reverse_lazy("dashboard")
 
     #descomentar para produccion, esto impide que usuario no verificados no pueden logearse
     """ 
