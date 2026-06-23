@@ -37,9 +37,9 @@ FREE_IMAGE_LIMIT = 1
 PREMIUM_POST_LIMIT = 300
 PREMIUM_IMAGE_LIMIT = 100
 
-# luego cambiar email_backed, por Gmail, o cualquier proveedror
+# ultimo cambio "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 EMAIL_HOST = "smtp.gmail.com"
 
