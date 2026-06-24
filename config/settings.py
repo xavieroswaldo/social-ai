@@ -37,7 +37,7 @@ FREE_IMAGE_LIMIT = 1
 PREMIUM_POST_LIMIT = 300
 PREMIUM_IMAGE_LIMIT = 100
 
-# ultimo cambio "django.core.mail.backends.smtp.EmailBackend"
+# ultimo cambio "django.core.mail.backends.smtp.EmailBackend", regresar cuando sea produccion
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -55,7 +55,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CONTACT_EMAIL = "miequipofullstack26@gmail.com"
 
-#Eliminra luego es solo para pruebas
+#Eliminar luego es solo para pruebas
 ALLOWED_HOSTS = ["social-ai-6tgv.onrender.com"]
 
 #eliminar luego es solo para pruebas, se agrego con render
