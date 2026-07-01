@@ -151,11 +151,7 @@ def generate_post(request):
 #generar imagen
 @login_required
 def generate_post_image(request, post_id):
-
-    return HttpResponse(
-        "ESTA ES LA NUEVA VISTA",
-        content_type="text/plain"
-    )
+    return HttpResponse("LLEGUE A LA VISTA")
 
 
 """
