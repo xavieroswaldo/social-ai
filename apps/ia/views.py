@@ -150,18 +150,12 @@ def generate_post(request):
 
 #generar imagen
 
+from django.http import HttpResponse
+
 @login_required
 def generate_post_image(request, post_id):
 
-    try:
-        resultado = test_task.delay()
-        return HttpResponse(f"Tarea enviada: {resultado.id}")
-
-    except Exception as e:
-        return HttpResponse(
-            "<pre>" + traceback.format_exc() + "</pre>",
-            status=500
-        )
+    return HttpResponse("VERSION NUEVA")
 """
 @login_required
 def generate_post_image(request, post_id):
