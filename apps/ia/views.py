@@ -13,6 +13,7 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from .tasks import test_task
+import traceback
 #from PIL import Image
 #from PIL import ImageDraw
 #from PIL import ImageFont
@@ -148,13 +149,27 @@ def generate_post(request):
     )
 
 #generar imagen
+
+@login_required
+def generate_post_image(request, post_id):
+
+    try:
+        resultado = test_task.delay()
+        return HttpResponse(f"Tarea enviada: {resultado.id}")
+
+    except Exception as e:
+        return HttpResponse(
+            "<pre>" + traceback.format_exc() + "</pre>",
+            status=500
+        )
+"""
 @login_required
 def generate_post_image(request, post_id):
 
     test_task.delay()
     return HttpResponse("Tarea enviada")
 
-"""
+
     post = get_object_or_404(
         GeneratedPost,
         id=post_id,
