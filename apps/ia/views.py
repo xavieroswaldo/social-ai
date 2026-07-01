@@ -11,6 +11,7 @@ from django.core.files.base import ContentFile
 from .models import GeneratedImage
 from django.conf import settings
 from django.core.paginator import Paginator
+from .tasks import test_task
 #from PIL import Image
 #from PIL import ImageDraw
 #from PIL import ImageFont
@@ -149,6 +150,7 @@ def generate_post(request):
 @login_required
 def generate_post_image(request, post_id):
 
+    test_task.delay()
     post = get_object_or_404(
         GeneratedPost,
         id=post_id,
