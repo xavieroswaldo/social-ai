@@ -68,7 +68,16 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
+# Celery
+CELERY_BROKER_URL = os.getenv(
+    "REDIS_URL",
+    "redis://localhost:6379/0",
+)
 
+CELERY_RESULT_BACKEND = os.getenv(
+    "REDIS_URL",
+    "redis://localhost:6379/0",
+)
 
 # Application definition
 
