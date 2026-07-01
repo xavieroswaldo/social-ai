@@ -11,6 +11,7 @@ from django.core.files.base import ContentFile
 from .models import GeneratedImage
 from django.conf import settings
 from django.core.paginator import Paginator
+from django.http import HttpResponse
 from .tasks import test_task
 #from PIL import Image
 #from PIL import ImageDraw
@@ -151,6 +152,9 @@ def generate_post(request):
 def generate_post_image(request, post_id):
 
     test_task.delay()
+    return HttpResponse("Tarea enviada")
+
+"""
     post = get_object_or_404(
         GeneratedPost,
         id=post_id,
@@ -213,6 +217,8 @@ def generate_post_image(request, post_id):
     subscription.save()
     
     return redirect("post_history")
+"""
+    
 
 #historial de las pubicaciones
 @login_required
