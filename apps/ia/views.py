@@ -152,7 +152,10 @@ def generate_post(request):
 @login_required
 def generate_post_image(request, post_id):
 
-    raise Exception("ESTA ES MI NUEVA VERSION")
+    return HttpResponse(
+        "ESTA ES LA NUEVA VISTA",
+        content_type="text/plain"
+    )
 
 
 """
