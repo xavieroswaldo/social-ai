@@ -149,13 +149,12 @@ def generate_post(request):
     )
 
 #generar imagen
-
-from django.http import HttpResponse
-
 @login_required
 def generate_post_image(request, post_id):
 
-    return HttpResponse("VERSION NUEVA")
+    raise Exception("ESTA ES MI NUEVA VERSION")
+
+
 """
 @login_required
 def generate_post_image(request, post_id):
